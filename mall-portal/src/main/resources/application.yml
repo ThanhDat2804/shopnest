@@ -1,0 +1,77 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: mall-portal
+  profiles:
+    active: dev # Default is development environment
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+jwt:
+  tokenHeader: Authorization # JWT request header
+  secret: mall-portal-secret # Secret key used for JWT encryption/decryption
+  expiration: 604800 # JWT expiration time (60*60*24*7 seconds)
+  tokenHead: 'Bearer '  # JWT prefix in the request payload
+
+secure:
+  ignored:
+    urls: # Security whitelist URLs
+      - /swagger-ui/
+      - /v3/api-docs/*
+      - /*/*.html
+      - /*/*.js
+      - /*/*.css
+      - /*/*.png
+      - /favicon.ico
+      - /actuator/**
+      - /druid/**
+      - /sso/**
+      - /home/**
+      - /product/**
+      - /brand/**
+      - /alipay/**
+
+springdoc:
+  swagger-ui:
+    # Change Swagger UI path
+    path: /swagger-ui.html
+    # Enable Swagger UI
+    enabled: true
+    # Configure the expansion mode for tags and operations (set to none)
+    doc-expansion: 'none'
+  api-docs:
+    # Change API docs path
+    path: /v3/api-docs
+    # Enable API docs
+    enabled: true
+  group-configs:
+    - group: 'mall-portal'
+      packages-to-scan: com.mall.shopnest.portal.controller
+
+# Custom Redis keys
+redis:
+  database: mall
+  key:
+    authCode: 'ums:authCode'
+    orderId: 'oms:orderId'
+    member: 'ums:member'
+  expire:
+    authCode: 90 # Verification code expiration time (seconds)
+    common: 86400 # 24 hours expiration time (seconds)
+
+mongo:
+  insert:
+    sqlEnable: true # Control whether to insert Mongo data from SQL database
+
+# Message queue definitions
+rabbitmq:
+  queue:
+    name:
+      cancelOrder: cancelOrderQueue
