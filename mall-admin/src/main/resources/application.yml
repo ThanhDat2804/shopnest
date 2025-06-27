@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: mall-admin
+  profiles:
+    active: dev # Default is development environment
+  servlet:
+    multipart:
+      enabled: true # Enable file upload
+      max-file-size: 10MB # Limit file upload size to 10MB
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+jwt:
+  tokenHeader: Authorization # Request header where JWT is stored
+  secret: mall-admin-secret # Secret key used for JWT encryption and decryption
+  expiration: 604800 # JWT expiration time (60*60*24*7, i.e., 7 days)
+  tokenHead: 'Bearer ' # Prefix for JWT payload
+
+redis:
+  database: mall
+  key:
+    admin: 'ums:admin'
+    resourceList: 'ums:resourceList'
+  expire:
+    common: 86400 # 24 hours
+
+secure:
+  ignored:
+    urls: # Security path whitelist
+      - /swagger-ui/
+      - /v3/api-docs/*
+      - /*/*.html
+      - /*/*.js
+      - /*/*.css
+      - /*/*.png
+      - /favicon.ico
+      - /actuator/**
+      - /druid/**
+      - /admin/login
+      - /admin/register
+      - /admin/info
+      - /admin/logout
+      - /minio/upload
+
+springdoc:
+  swagger-ui:
+    # Modify Swagger UI path
+    path: /swagger-ui.html
+    # Enable Swagger UI interface
+    enabled: true
+    # Configure tag and operation expansion, set to not expand by default
+    doc-expansion: 'none'
+  api-docs:
+    # Modify api-docs path
+    path: /v3/api-docs
+    # Enable api-docs
+    enabled: true
+  group-configs:
+    - group: 'default'
+      packages-to-scan: com.mall.shopnest.controller
+  default-flat-param-object: false

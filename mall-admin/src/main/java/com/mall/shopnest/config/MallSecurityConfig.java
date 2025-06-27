@@ -1,6 +1,9 @@
-package com.mall.shopnest;
+package com.mall.shopnest.config;
 
-
+import com.mall.shopnest.core.model.ums.UmsResource;
+import com.mall.shopnest.security.component.DynamicSecurityService;
+import com.mall.shopnest.service.UmsAdminService;
+import com.mall.shopnest.service.UmsResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
