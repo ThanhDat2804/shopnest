@@ -1,9 +1,6 @@
 package com.mall.shopnest.security.config;
 
-import com.mall.shopnest.security.component.DynamicAuthorizationManager;
-import com.mall.shopnest.security.component.JwtAuthenticationTokenFilter;
-import com.mall.shopnest.security.component.RestAuthenticationEntryPoint;
-import com.mall.shopnest.security.component.RestfulAccessDeniedHandler;
+import com.mall.shopnest.security.component.*;
 import com.mall.shopnest.security.util.JwtTokenUtil;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
@@ -44,11 +41,11 @@ public class CommonSecurityConfig {
         return new JwtAuthenticationTokenFilter();
     }
 
-//    @ConditionalOnBean(name = "dynamicSecurityService")
-//    @Bean
-//    public DynamicSecurityMetadataSource dynamicSecurityMetadataSource() {
-//        return new DynamicSecurityMetadataSource();
-//    }
+    @ConditionalOnBean(name = "dynamicSecurityService")
+    @Bean
+    public DynamicSecurityMetadataSource dynamicSecurityMetadataSource() {
+        return new DynamicSecurityMetadataSource();
+    }
 
     @ConditionalOnBean(name = "dynamicSecurityService")
     @Bean

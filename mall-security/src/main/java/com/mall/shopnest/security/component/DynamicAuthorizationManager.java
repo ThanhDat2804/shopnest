@@ -4,6 +4,7 @@ import com.mall.shopnest.security.config.IgnoreUrlsConfig;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.AuthorizationManager;
 import org.springframework.security.core.Authentication;
@@ -19,8 +20,8 @@ import java.util.stream.Collectors;
 
 public class DynamicAuthorizationManager implements AuthorizationManager<RequestAuthorizationContext> {
 
-//    @Autowired
-//    private DynamicSecurityMetadataSource securityDataSource;
+    @Autowired
+    private DynamicSecurityMetadataSource securityDataSource;
     @Autowired
     private IgnoreUrlsConfig ignoreUrlsConfig;
 
@@ -49,10 +50,10 @@ public class DynamicAuthorizationManager implements AuthorizationManager<Request
         }
 
         // Authorization logic
-//        List<ConfigAttribute> configAttributeList = securityDataSource.getConfigAttributesWithPath(path);
-//        List<String> needAuthorities = configAttributeList.stream()
-//                .map(ConfigAttribute::getAttribute)
-//                .collect(Collectors.toList());
+        List<ConfigAttribute> configAttributeList = securityDataSource.getConfigAttributesWithPath(path);
+        List<String> needAuthorities = configAttributeList.stream()
+                .map(ConfigAttribute::getAttribute)
+                .collect(Collectors.toList());
 
         Authentication currentAuth = authentication.get();
 
@@ -60,7 +61,7 @@ public class DynamicAuthorizationManager implements AuthorizationManager<Request
         if (currentAuth.isAuthenticated()) {
             Collection<? extends GrantedAuthority> grantedAuthorities = currentAuth.getAuthorities();
             List<? extends GrantedAuthority> hasAuth = grantedAuthorities.stream()
-//                    .filter(item -> needAuthorities.contains(item.getAuthority()))
+                    .filter(item -> needAuthorities.contains(item.getAuthority()))
                     .collect(Collectors.toList());
 
             // Check if the user has at least one required authority
