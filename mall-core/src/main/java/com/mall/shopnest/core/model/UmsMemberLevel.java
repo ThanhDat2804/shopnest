@@ -1,7 +1,6 @@
-package com.mall.shopnest.model;
+package com.mall.shopnest.core.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;

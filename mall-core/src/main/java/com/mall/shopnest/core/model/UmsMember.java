@@ -1,6 +1,5 @@
-package com.mall.shopnest.model;
+package com.mall.shopnest.core.model;
 
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
