@@ -4,12 +4,12 @@
 The project is an e-commerce system, including the front-end store system and the back-end management system, based on SpringBoot, using Docker containerized deployment. The front desk mall system includes home page portal, product recommendation, product search, product display, shopping cart, order flow, member center, customer service, help center and other modules. The back-end management system includes commodity management, order management, member management, promotion management, operation management, content management, statistical reports, financial management, rights management, settings and other modules.
 ## Organizational structure
 mall
-├── mall-common -- tools and common code
-├── mall-core -- JPA-based database operations (replaces mall-mbg)
-├── mall-security -- SpringSecurity encapsulation common module
-├── mall-admin -- backend mall management system interface
-├── mall-search -- commodity search system based on Elasticsearch
-└──mall-portal -- frontend mall system interface
+- **mall-common**: Shared utilities and common code used across modules.
+- **mall-core**: Core module for JPA-based database operations, including entities and repositories.
+- **mall-security**: Spring Security configuration for authentication and authorization.
+- **mall-admin**: Backend interface for mall management (e.g., product and user management).
+- **mall-search**: Product search functionality powered by Elasticsearch.
+- **mall-portal**: Frontend interface for the mall system (e.g., customer-facing features).
 ## Technical selection
 | Technology            | Description                       | Official Site                                |
 |-----------------------|-----------------------------------|----------------------------------------------|
