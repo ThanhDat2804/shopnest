@@ -12,6 +12,7 @@
     <modules>
         <module>mall-common</module>
         <module>mall-security</module>
+        <module>mall-core</module>
         <module>mall-admin</module>
         <module>mall-portal</module>
     </modules>

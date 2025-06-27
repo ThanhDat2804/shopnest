@@ -1,6 +1,6 @@
 package com.mall.shopnest.portal.service;
 
-import com.mall.shopnest.model.UmsMember;
+import com.mall.shopnest.core.model.ums.UmsMember;
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.userdetails.UserDetails;
 

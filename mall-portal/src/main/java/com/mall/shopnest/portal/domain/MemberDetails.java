@@ -1,7 +1,6 @@
 package com.mall.shopnest.portal.domain;
 
-
-import com.mall.shopnest.model.UmsMember;
+import com.mall.shopnest.core.model.ums.UmsMember;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

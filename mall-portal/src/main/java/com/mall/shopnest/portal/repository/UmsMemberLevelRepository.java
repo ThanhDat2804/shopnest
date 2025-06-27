@@ -1,6 +1,6 @@
 package com.mall.shopnest.portal.repository;
 
-import com.mall.shopnest.model.UmsMemberLevel;
+import com.mall.shopnest.core.model.ums.UmsMemberLevel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

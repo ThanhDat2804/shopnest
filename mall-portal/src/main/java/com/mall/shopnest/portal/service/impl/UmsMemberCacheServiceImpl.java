@@ -1,7 +1,7 @@
 package com.mall.shopnest.portal.service.impl;
 
 import com.mall.shopnest.security.annotation.CacheException;
-import com.mall.shopnest.model.UmsMember;
+import com.mall.shopnest.core.model.ums.UmsMember;
 import com.mall.shopnest.portal.repository.UmsMemberRepository;
 import com.mall.shopnest.service.RedisService;
 import com.mall.shopnest.portal.service.UmsMemberCacheService;

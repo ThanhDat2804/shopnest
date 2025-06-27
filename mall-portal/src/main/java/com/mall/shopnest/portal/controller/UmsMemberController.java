@@ -1,7 +1,8 @@
 package com.mall.shopnest.portal.controller;
 
 import com.mall.shopnest.api.CommonResult;
-import com.mall.shopnest.model.UmsMember;
+
+import com.mall.shopnest.core.model.ums.UmsMember;
 import com.mall.shopnest.portal.service.UmsMemberSevice;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
