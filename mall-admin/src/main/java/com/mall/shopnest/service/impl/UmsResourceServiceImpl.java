@@ -70,6 +70,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
 
     @Override
     public Page<UmsResource> listAll() {
-        return (Page<UmsResource>) resourceRepository.findAll();
+        List<UmsResource> resourceList = resourceRepository.findAll();
+        return new org.springframework.data.domain.PageImpl<>(resourceList);
     }
 }
