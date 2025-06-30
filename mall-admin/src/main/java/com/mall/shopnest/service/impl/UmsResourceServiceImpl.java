@@ -5,6 +5,7 @@ import com.mall.shopnest.repository.ums.UmsResourceRepository;
 import com.mall.shopnest.service.UmsAdminCacheService;
 import com.mall.shopnest.service.UmsResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
     }
 
     @Override
-    public List<UmsResource> list(Long categoryId, String nameKeyword, String urlKeyword, Integer pageSize, Integer pageNum) {
+    public Page<UmsResource> list(Long categoryId, String nameKeyword, String urlKeyword, Integer pageSize, Integer pageNum) {
         Specification<UmsResource> spec = (root, query, cb) -> {
             var predicates = cb.conjunction();
             if (categoryId != null) {
@@ -64,11 +65,11 @@ public class UmsResourceServiceImpl implements UmsResourceService {
             return predicates;
         };
 
-        return resourceRepository.findAll(spec, PageRequest.of(pageNum - 1, pageSize)).getContent();
+        return resourceRepository.findAll(spec, PageRequest.of(pageNum - 1, pageSize));
     }
 
     @Override
-    public List<UmsResource> listAll() {
-        return resourceRepository.findAll();
+    public Page<UmsResource> listAll() {
+        return (Page<UmsResource>) resourceRepository.findAll();
     }
 }

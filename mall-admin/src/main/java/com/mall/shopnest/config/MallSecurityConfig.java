@@ -7,10 +7,10 @@ import com.mall.shopnest.service.UmsResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -34,7 +34,7 @@ public class MallSecurityConfig {
             @Override
             public Map<String, ConfigAttribute> loadDataSource() {
                 Map<String, ConfigAttribute> map = new ConcurrentHashMap<>();
-                List<UmsResource> resourceList = resourceService.listAll();
+                Page<UmsResource> resourceList = resourceService.listAll();
                 for (UmsResource resource : resourceList) {
                     map.put(resource.getUrl(), new org.springframework.security.access.SecurityConfig(resource.getId() + ":" + resource.getName()));
                 }

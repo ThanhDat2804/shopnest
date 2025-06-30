@@ -1,6 +1,7 @@
 package com.mall.shopnest.service;
 
 import com.mall.shopnest.core.model.ums.UmsResource;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -33,10 +34,11 @@ public interface UmsResourceService {
     /**
      * Paginated query for resources
      */
-    List<UmsResource> list(Long categoryId, String nameKeyword, String urlKeyword, Integer pageSize, Integer pageNum);
+    Page<UmsResource> list(Long categoryId, String nameKeyword, String urlKeyword, Integer pageSize, Integer pageNum);
+
 
     /**
      * Get all resources
      */
-    List<UmsResource> listAll();
+    Page<UmsResource> listAll();
 }

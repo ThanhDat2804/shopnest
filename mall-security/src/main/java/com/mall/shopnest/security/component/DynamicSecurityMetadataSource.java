@@ -1,6 +1,5 @@
 package com.mall.shopnest.security.component;
 
-import com.mall.shopnest.security.component.DynamicSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.FilterInvocation;
